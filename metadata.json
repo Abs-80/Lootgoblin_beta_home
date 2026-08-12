@@ -1,0 +1,6 @@
+{
+  "name": "Loot Goblin",
+  "description": "Landing page for Loot Goblin, the ultimate AI reselling companion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
