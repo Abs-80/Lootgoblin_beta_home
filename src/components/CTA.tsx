@@ -61,7 +61,13 @@ export default function CTA() {
 
     setIsSubmitting(true);
     try {
-      await fetch(WEBHOOK_URL, {
+      const queryParams = new URLSearchParams({
+        email: cleanEmail,
+        platform: selectedPlatform,
+        source: 'Loot Goblin Website Beta Waitlist',
+      });
+
+      await fetch(`${WEBHOOK_URL}?${queryParams.toString()}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
