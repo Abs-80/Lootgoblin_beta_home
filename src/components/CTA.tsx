@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
-import { Smartphone, CircleDollarSign, Gem } from 'lucide-react';
+import { Smartphone, CircleDollarSign, Gem, Apple } from 'lucide-react';
 
 const LOOT = Array.from({ length: 60 }).map((_, i) => {
   const isGem = Math.random() > 0.6; // 40% gems
@@ -24,9 +24,18 @@ const LOOT = Array.from({ length: 60 }).map((_, i) => {
   };
 });
 
+function AndroidIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5898 8.4049 13.8564 8.087 12 8.087s-3.5898.3179-5.1378.8627L4.8399 5.4467a.416.416 0 00-.5676-.1521.416.416 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+    </svg>
+  );
+}
+
 const WEBHOOK_URL = 'https://hook.us1.make.com/g8hb82exo8oh7dsb97bew51upkgsf48p';
 
 export default function CTA() {
+  const [selectedPlatform, setSelectedPlatform] = useState<'iOS' | 'Android' | null>(null);
   const [email, setEmail] = useState('');
   const [botField, setBotField] = useState(''); // Invisible honeypot field
   const [loadTime] = useState(() => Date.now()); // Time-trap for rapid script bots
@@ -36,7 +45,7 @@ export default function CTA() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const cleanEmail = email.trim();
-    if (!cleanEmail || isSubmitting) return;
+    if (!cleanEmail || !selectedPlatform || isSubmitting) return;
 
     // Honeypot trap: if bot entered a name into the hidden field, silently fake success without calling webhook
     if (botField.trim().length > 0) {
@@ -59,6 +68,7 @@ export default function CTA() {
         },
         body: JSON.stringify({
           email: cleanEmail,
+          platform: selectedPlatform,
           timestamp: new Date().toISOString(),
           source: 'Loot Goblin Website Beta Waitlist',
         }),
@@ -126,61 +136,119 @@ export default function CTA() {
           </p>
           
           {submitted ? (
-            <div className="bg-emerald-800/90 border border-emerald-400/40 rounded-2xl p-6 text-emerald-50 max-w-md mx-auto shadow-lg backdrop-blur-sm">
-              <p className="font-bold text-lg mb-1">🎉 You're on the Beta list!</p>
+            <div className="bg-emerald-800/90 border border-emerald-400/40 rounded-2xl p-6 text-emerald-50 max-w-md mx-auto shadow-lg backdrop-blur-sm space-y-3">
+              <p className="font-bold text-lg mb-1">🎉 You're on the {selectedPlatform} Beta list!</p>
               <p className="text-sm text-emerald-100">
-                We'll email your invite link to <span className="font-semibold text-white underline">{email}</span> as spots open up.
+                We'll email your {selectedPlatform === 'iOS' ? 'TestFlight' : 'Google Play'} invite link to <span className="font-semibold text-white underline">{email}</span> as spots open up.
               </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSubmitted(false);
+                  setEmail('');
+                  setSelectedPlatform(null);
+                }}
+                className="inline-block text-xs text-emerald-200 hover:text-white underline cursor-pointer pt-2"
+              >
+                Register another device or platform &rarr;
+              </button>
+            </div>
+          ) : !selectedPlatform ? (
+            /* Platform Selection Step */
+            <div className="space-y-4 max-w-md mx-auto">
+              <p className="text-sm font-semibold text-emerald-100 uppercase tracking-wider">
+                Select your device platform:
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  type="button"
+                  onClick={() => setSelectedPlatform('iOS')}
+                  className="flex-1 inline-flex items-center justify-center gap-3 px-6 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-2xl transition-all shadow-lg hover:shadow-xl active:scale-95 cursor-pointer border border-white/10 group"
+                >
+                  <Apple className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
+                  <span>Apple (iOS)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedPlatform('Android')}
+                  className="flex-1 inline-flex items-center justify-center gap-3 px-6 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-2xl transition-all shadow-lg hover:shadow-xl active:scale-95 cursor-pointer border border-white/10 group"
+                >
+                  <AndroidIcon className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
+                  <span>Android</span>
+                </button>
+              </div>
             </div>
           ) : (
-            <form 
-              onSubmit={handleSubmit}
-              className="max-w-md mx-auto flex flex-col sm:flex-row gap-3 relative"
-            >
-              {/* Invisible Honeypot field for bot trapping */}
-              <div 
-                aria-hidden="true" 
-                style={{ 
-                  opacity: 0, 
-                  position: 'absolute', 
-                  top: 0, 
-                  left: 0, 
-                  height: 0, 
-                  width: 0, 
-                  zIndex: -1, 
-                  pointerEvents: 'none', 
-                  overflow: 'hidden' 
-                }}
-              >
-                <label htmlFor="user_full_name">Full Name</label>
-                <input 
-                  id="user_full_name"
-                  type="text" 
-                  name="user_full_name" 
-                  value={botField}
-                  onChange={(e) => setBotField(e.target.value)}
-                  tabIndex={-1} 
-                  autoComplete="off" 
-                />
+            /* Email Input Step for Selected Platform */
+            <div className="max-w-md mx-auto">
+              <div className="flex items-center justify-between mb-3 px-1 text-sm">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-white text-xs font-bold border border-white/20 backdrop-blur-sm">
+                  {selectedPlatform === 'iOS' ? (
+                    <Apple className="w-3.5 h-3.5" />
+                  ) : (
+                    <AndroidIcon className="w-3.5 h-3.5" />
+                  )}
+                  {selectedPlatform === 'iOS' ? 'Apple TestFlight Beta' : 'Android Google Play Beta'}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setSelectedPlatform(null)}
+                  className="text-xs text-emerald-200 hover:text-white underline cursor-pointer"
+                >
+                  Switch device
+                </button>
               </div>
 
-              <input 
-                type="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email" 
-                disabled={isSubmitting}
-                className="flex-1 bg-white border border-transparent rounded-xl px-4 py-4 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-4 focus:ring-emerald-400/30 transition-shadow shadow-md disabled:opacity-70"
-                required
-              />
-              <button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-70 text-white font-bold rounded-xl transition-all shadow-lg whitespace-nowrap active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+              <form 
+                onSubmit={handleSubmit}
+                className="flex flex-col sm:flex-row gap-3 relative"
               >
-                {isSubmitting ? 'Joining...' : 'Get Beta Access'}
-              </button>
-            </form>
+                {/* Invisible Honeypot field for bot trapping */}
+                <div 
+                  aria-hidden="true" 
+                  style={{ 
+                    opacity: 0, 
+                    position: 'absolute', 
+                    top: 0, 
+                    left: 0, 
+                    height: 0, 
+                    width: 0, 
+                    zIndex: -1, 
+                    pointerEvents: 'none', 
+                    overflow: 'hidden' 
+                  }}
+                >
+                  <label htmlFor="user_full_name">Full Name</label>
+                  <input 
+                    id="user_full_name"
+                    type="text" 
+                    name="user_full_name" 
+                    value={botField}
+                    onChange={(e) => setBotField(e.target.value)}
+                    tabIndex={-1} 
+                    autoComplete="off" 
+                  />
+                </div>
+
+                <input 
+                  type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={selectedPlatform === 'iOS' ? "Enter your Apple ID / email" : "Enter your Google Play email"} 
+                  disabled={isSubmitting}
+                  className="flex-1 bg-white border border-transparent rounded-xl px-4 py-4 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-4 focus:ring-emerald-400/30 transition-shadow shadow-md disabled:opacity-70"
+                  autoFocus
+                  required
+                />
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-70 text-white font-bold rounded-xl transition-all shadow-lg whitespace-nowrap active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? 'Joining...' : `Get ${selectedPlatform} Invite`}
+                </button>
+              </form>
+            </div>
           )}
           
           <p className="text-xs text-emerald-200 mt-6 font-medium">
