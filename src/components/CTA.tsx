@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { Smartphone, CircleDollarSign, Gem } from 'lucide-react';
 
@@ -24,9 +24,41 @@ const LOOT = Array.from({ length: 60 }).map((_, i) => {
   };
 });
 
+const WEBHOOK_URL = 'https://hook.us1.make.com/g8hb82exo8oh7dsb97bew51upkgsf48p';
+
 export default function CTA() {
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const cleanEmail = email.trim();
+    if (!cleanEmail || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: cleanEmail,
+          timestamp: new Date().toISOString(),
+          source: 'Loot Goblin Website Beta Waitlist',
+        }),
+      });
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Waitlist submission error:', error);
+      // Fallback gracefully so user gets confirmation
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="join-beta" className="py-32 bg-emerald-700 text-white relative overflow-hidden">
       {/* Background gradients */}
@@ -88,10 +120,7 @@ export default function CTA() {
             </div>
           ) : (
             <form 
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (email.trim()) setSubmitted(true);
-              }}
+              onSubmit={handleSubmit}
               className="max-w-md mx-auto flex flex-col sm:flex-row gap-3"
             >
               <input 
@@ -99,14 +128,16 @@ export default function CTA() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email" 
-                className="flex-1 bg-white border border-transparent rounded-xl px-4 py-4 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-4 focus:ring-emerald-400/30 transition-shadow shadow-md"
+                disabled={isSubmitting}
+                className="flex-1 bg-white border border-transparent rounded-xl px-4 py-4 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-4 focus:ring-emerald-400/30 transition-shadow shadow-md disabled:opacity-70"
                 required
               />
               <button 
                 type="submit" 
-                className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-xl transition-all shadow-lg whitespace-nowrap active:scale-95 cursor-pointer"
+                disabled={isSubmitting}
+                className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-70 text-white font-bold rounded-xl transition-all shadow-lg whitespace-nowrap active:scale-95 cursor-pointer flex items-center justify-center gap-2"
               >
-                Get Beta Access
+                {isSubmitting ? 'Joining...' : 'Get Beta Access'}
               </button>
             </form>
           )}
