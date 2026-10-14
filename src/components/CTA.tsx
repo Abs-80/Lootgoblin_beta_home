@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Smartphone, CircleDollarSign, Gem } from 'lucide-react';
 
@@ -24,6 +25,8 @@ const LOOT = Array.from({ length: 60 }).map((_, i) => {
 });
 
 export default function CTA() {
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
   return (
     <section id="join-beta" className="py-32 bg-emerald-700 text-white relative overflow-hidden">
       {/* Background gradients */}
@@ -76,23 +79,40 @@ export default function CTA() {
             Join the exclusive Beta test today and get early access to the most powerful valuation engine on the market. Available natively for iOS and Android.
           </p>
           
-          <form className="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              className="flex-1 bg-white border border-transparent rounded-xl px-4 py-4 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-4 focus:ring-emerald-400/30 transition-shadow shadow-md"
-              required
-            />
-            <button 
-              type="submit" 
-              className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-xl transition-all shadow-lg whitespace-nowrap active:scale-95"
+          {submitted ? (
+            <div className="bg-emerald-800/90 border border-emerald-400/40 rounded-2xl p-6 text-emerald-50 max-w-md mx-auto shadow-lg backdrop-blur-sm">
+              <p className="font-bold text-lg mb-1">🎉 You're on the Beta list!</p>
+              <p className="text-sm text-emerald-100">
+                We'll email your invite link to <span className="font-semibold text-white underline">{email}</span> as spots open up.
+              </p>
+            </div>
+          ) : (
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (email.trim()) setSubmitted(true);
+              }}
+              className="max-w-md mx-auto flex flex-col sm:flex-row gap-3"
             >
-              Get Beta Access
-            </button>
-          </form>
+              <input 
+                type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email" 
+                className="flex-1 bg-white border border-transparent rounded-xl px-4 py-4 text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus:ring-4 focus:ring-emerald-400/30 transition-shadow shadow-md"
+                required
+              />
+              <button 
+                type="submit" 
+                className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-xl transition-all shadow-lg whitespace-nowrap active:scale-95 cursor-pointer"
+              >
+                Get Beta Access
+              </button>
+            </form>
+          )}
           
           <p className="text-xs text-emerald-200 mt-6 font-medium">
-            Spots are limited. We'll never sell your data to the big corporations.
+            Spots are limited.
           </p>
         </motion.div>
       </div>

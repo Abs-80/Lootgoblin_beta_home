@@ -25,8 +25,8 @@ export default function Features() {
     },
     {
       icon: <Search className="w-6 h-6 text-emerald-600" />,
-      title: "'No-Nonsense Filter'",
-      description: "Uses our Smart-Sync engine to filter out bad comps. Any listing below our strict visual similarity threshold is stripped out."
+      title: "Precision Comp Matching",
+      description: "Uses our Smart-Sync engine to eliminate irrelevant listings and bad matches so only verified comps influence your price estimates."
     },
     {
       icon: <Languages className="w-6 h-6 text-emerald-600" />,

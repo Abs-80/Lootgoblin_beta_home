@@ -12,6 +12,29 @@ export default function Footer() {
           <img src={lootGoblinLetters} alt="Loot Goblin" className="h-5 object-contain" />
         </div>
         
+        <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium">
+          <a 
+            href="#terms" 
+            className="hover:text-emerald-600 transition-colors"
+          >
+            Terms of Service &amp; EULA
+          </a>
+          <span className="text-zinc-300 hidden sm:inline">&bull;</span>
+          <a 
+            href="#privacy" 
+            className="hover:text-emerald-600 transition-colors"
+          >
+            Privacy Policy
+          </a>
+          <span className="text-zinc-300 hidden sm:inline">&bull;</span>
+          <a 
+            href="#support" 
+            className="hover:text-emerald-600 transition-colors"
+          >
+            Help &amp; Support
+          </a>
+        </div>
+        
         <div className="text-sm">
           &copy; {new Date().getFullYear()} Loot Goblin App. All rights reserved.
         </div>
