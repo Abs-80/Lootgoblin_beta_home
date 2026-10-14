@@ -28,6 +28,8 @@ const WEBHOOK_URL = 'https://hook.us1.make.com/g8hb82exo8oh7dsb97bew51upkgsf48p'
 
 export default function CTA() {
   const [email, setEmail] = useState('');
+  const [botField, setBotField] = useState(''); // Invisible honeypot field
+  const [loadTime] = useState(() => Date.now()); // Time-trap for rapid script bots
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -35,6 +37,18 @@ export default function CTA() {
     e.preventDefault();
     const cleanEmail = email.trim();
     if (!cleanEmail || isSubmitting) return;
+
+    // Honeypot trap: if bot entered a name into the hidden field, silently fake success without calling webhook
+    if (botField.trim().length > 0) {
+      setSubmitted(true);
+      return;
+    }
+
+    // Time-trap: if submitted in under 800ms since render, it is an automated script bot
+    if (Date.now() - loadTime < 800) {
+      setSubmitted(true);
+      return;
+    }
 
     setIsSubmitting(true);
     try {
@@ -121,8 +135,35 @@ export default function CTA() {
           ) : (
             <form 
               onSubmit={handleSubmit}
-              className="max-w-md mx-auto flex flex-col sm:flex-row gap-3"
+              className="max-w-md mx-auto flex flex-col sm:flex-row gap-3 relative"
             >
+              {/* Invisible Honeypot field for bot trapping */}
+              <div 
+                aria-hidden="true" 
+                style={{ 
+                  opacity: 0, 
+                  position: 'absolute', 
+                  top: 0, 
+                  left: 0, 
+                  height: 0, 
+                  width: 0, 
+                  zIndex: -1, 
+                  pointerEvents: 'none', 
+                  overflow: 'hidden' 
+                }}
+              >
+                <label htmlFor="user_full_name">Full Name</label>
+                <input 
+                  id="user_full_name"
+                  type="text" 
+                  name="user_full_name" 
+                  value={botField}
+                  onChange={(e) => setBotField(e.target.value)}
+                  tabIndex={-1} 
+                  autoComplete="off" 
+                />
+              </div>
+
               <input 
                 type="email" 
                 value={email}
