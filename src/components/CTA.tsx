@@ -1,6 +1,19 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
-import { Apple } from 'lucide-react';
+import { Apple, CircleDollarSign, Gem, Smartphone } from 'lucide-react';
+
+// Lightweight, GPU-accelerated ambient loot cascade (9 items, 0% CPU, no expensive blur filters)
+const LOOT_ITEMS = [
+  { id: 1, type: 'coin', left: 8, delay: 0, duration: 8.5, size: 28 },
+  { id: 2, type: 'gem', color: 'text-rose-300 fill-rose-400/70', left: 18, delay: 2.2, duration: 10.5, size: 22 },
+  { id: 3, type: 'coin', left: 28, delay: 4.0, duration: 8.0, size: 30 },
+  { id: 4, type: 'gem', color: 'text-cyan-300 fill-cyan-400/70', left: 42, delay: 1.0, duration: 9.5, size: 24 },
+  { id: 5, type: 'coin', left: 55, delay: 5.2, duration: 8.2, size: 26 },
+  { id: 6, type: 'gem', color: 'text-purple-300 fill-purple-400/70', left: 68, delay: 3.1, duration: 11.0, size: 24 },
+  { id: 7, type: 'coin', left: 78, delay: 1.6, duration: 7.8, size: 30 },
+  { id: 8, type: 'gem', color: 'text-emerald-200 fill-emerald-400/70', left: 88, delay: 4.4, duration: 9.8, size: 22 },
+  { id: 9, type: 'coin', left: 94, delay: 2.5, duration: 8.8, size: 26 },
+];
 
 function AndroidIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -72,6 +85,46 @@ export default function CTA() {
       {/* Background gradients */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-emerald-950/50"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-400/20 blur-[100px] rounded-full pointer-events-none"></div>
+
+      {/* Lightweight GPU-Accelerated Falling Loot (9 items, pure CSS transforms, zero blur filters) */}
+      <style>{`
+        @keyframes gentleLootFall {
+          0% {
+            transform: translate3d(0, -60px, 0) rotate(0deg);
+            opacity: 0;
+          }
+          15% {
+            opacity: 0.8;
+          }
+          85% {
+            opacity: 0.8;
+          }
+          100% {
+            transform: translate3d(0, 950px, 0) rotate(240deg);
+            opacity: 0;
+          }
+        }
+      `}</style>
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {LOOT_ITEMS.map((item) => (
+          <div
+            key={item.id}
+            className="absolute"
+            style={{
+              left: `${item.left}%`,
+              top: '-40px',
+              animation: `gentleLootFall ${item.duration}s linear ${item.delay}s infinite`,
+              willChange: 'transform, opacity'
+            }}
+          >
+            {item.type === 'coin' ? (
+              <CircleDollarSign size={item.size} className="text-amber-300 fill-amber-400/80" />
+            ) : (
+              <Gem size={item.size} className={item.color} />
+            )}
+          </div>
+        ))}
+      </div>
       
       <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
         <motion.div
