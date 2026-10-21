@@ -1,28 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
-import { Smartphone, CircleDollarSign, Gem, Apple } from 'lucide-react';
-
-const LOOT = Array.from({ length: 60 }).map((_, i) => {
-  const isGem = Math.random() > 0.6; // 40% gems
-  const gemColors = [
-    { outer: 'text-rose-400', inner: 'fill-rose-300 text-rose-600', dropShadow: 'drop-shadow-[0_0_10px_rgba(244,63,94,0.5)]' },
-    { outer: 'text-purple-400', inner: 'fill-purple-300 text-purple-600', dropShadow: 'drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]' },
-    { outer: 'text-cyan-400', inner: 'fill-cyan-300 text-cyan-600', dropShadow: 'drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]' },
-    { outer: 'text-emerald-300', inner: 'fill-emerald-200 text-emerald-500', dropShadow: 'drop-shadow-[0_0_10px_rgba(52,211,153,0.5)]' }
-  ];
-  const gemColor = gemColors[Math.floor(Math.random() * gemColors.length)];
-  
-  return {
-    id: i,
-    type: isGem ? 'gem' : 'coin',
-    color: isGem ? gemColor : { outer: 'text-amber-400', inner: 'fill-amber-300 text-amber-600', dropShadow: 'drop-shadow-[0_0_10px_rgba(251,191,36,0.5)]' },
-    left: Math.random() * 100,
-    delay: Math.random() * 8,
-    duration: 4 + Math.random() * 4,
-    size: isGem ? 18 + Math.random() * 16 : 24 + Math.random() * 24,
-    rotation: Math.random() * 360,
-  };
-});
+import { Apple } from 'lucide-react';
 
 function AndroidIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -94,37 +72,6 @@ export default function CTA() {
       {/* Background gradients */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-emerald-950/50"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-400/20 blur-[100px] rounded-full pointer-events-none"></div>
-      
-      {/* Raining Loot */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {LOOT.map((item) => (
-          <motion.div
-            key={item.id}
-            animate={{ 
-              y: ['-100px', '1000px'],
-              opacity: [0, 1, 1, 0],
-              rotate: [item.rotation, item.rotation + 360]
-            }}
-            transition={{
-              duration: item.duration,
-              delay: item.delay,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className={`absolute ${item.color.outer} ${item.color.dropShadow}`}
-            style={{ 
-              left: `${item.left}%`,
-              top: '-100px'
-            }}
-          >
-            {item.type === 'coin' ? (
-              <CircleDollarSign size={item.size} className={item.color.inner} />
-            ) : (
-              <Gem size={item.size} className={item.color.inner} />
-            )}
-          </motion.div>
-        ))}
-      </div>
       
       <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
         <motion.div
