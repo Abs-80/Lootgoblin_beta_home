@@ -16,7 +16,7 @@ export default function HowItWorks() {
     {
       icon: <DollarSign className="w-8 h-8 text-emerald-600" />,
       title: "3. Profit",
-      description: "Get hyper-accurate pricing and a ready-to-copy, SEO-optimized listing description."
+      description: "Get an estimated resale range and a ready-to-copy listing description."
     }
   ];
 

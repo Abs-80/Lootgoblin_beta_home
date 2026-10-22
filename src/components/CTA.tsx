@@ -138,7 +138,7 @@ export default function CTA() {
           
           <h2 className="text-4xl md:text-6xl font-black mb-6">Ready to hoard some loot?</h2>
           <p className="text-xl text-emerald-100 mb-10 max-w-2xl mx-auto">
-            Join the exclusive Beta test today and get early access to the most powerful valuation engine on the market. Available natively for iOS and Android.
+            Join the Beta test and get early access to Loot Goblin before launch. Help us shape it with your feedback. Built natively for iOS and Android.
           </p>
           
           {submitted ? (
@@ -258,7 +258,7 @@ export default function CTA() {
           )}
           
           <p className="text-xs text-emerald-200 mt-6 font-medium">
-            Spots are limited.
+            Beta testers help shape what we build.
           </p>
         </motion.div>
       </div>

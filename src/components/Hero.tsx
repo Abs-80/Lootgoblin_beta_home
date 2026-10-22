@@ -26,7 +26,7 @@ export default function Hero() {
           </h1>
           
           <p className="text-xl text-zinc-600 mb-10 leading-relaxed max-w-2xl">
-            Snap a photo. Identify the item. Get exact market valuations instantly. Stop guessing and start hoarding treasures like a true goblin.
+            Snap a photo. Identify the item. Get an AI-powered resale estimate in seconds. Guess less and start hoarding treasures like a true goblin.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

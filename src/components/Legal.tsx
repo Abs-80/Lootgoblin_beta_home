@@ -134,7 +134,7 @@ export default function Legal({ initialTab = 'terms' }: LegalProps) {
                 </div>
                 <div className="text-sm text-zinc-700 space-y-3">
                   <p>
-                    Loot Goblin may offer auto-renewable subscription tiers (such as <strong>Loot Goblin Pro</strong> or <strong>Founder Pass</strong>) that provide unlimited scans, real-time sold comp verification, and specialized book/media pipelines.
+                    Loot Goblin may offer auto-renewable subscription tiers (such as <strong>Loot Goblin Pro</strong> or <strong>Founder Pass</strong>) that provide additional scans and premium features.
                   </p>
                   <ul className="list-disc pl-5 space-y-2">
                     <li>
@@ -159,7 +159,7 @@ export default function Legal({ initialTab = 'terms' }: LegalProps) {
               <section className="space-y-3">
                 <h3 className="text-lg font-bold text-zinc-900">3. Valuation &amp; Informational Data Disclaimer</h3>
                 <p>
-                  Any market valuations, pricing estimates, comp medians, or identification results provided by Loot Goblin are generated via automated algorithms and machine learning models for informational, personal, and entertainment purposes only.
+                  Any market valuations, pricing estimates or identification results provided by Loot Goblin are generated via automated algorithms and machine learning models for informational, personal, and entertainment purposes only.
                 </p>
                 <p>
                   Loot Goblin does not provide professional appraisal, financial, tax, or investment advice. You expressly assume all risks associated with reliance upon pricing estimates. Adrian Chapman and Loot Goblin are not responsible or liable for any commercial or personal buying, selling, or inventory decisions made based on app outputs.
@@ -230,7 +230,7 @@ export default function Legal({ initialTab = 'terms' }: LegalProps) {
               <div className="p-5 bg-zinc-50 border border-zinc-200 rounded-2xl text-sm space-y-2">
                 <p className="font-semibold text-zinc-900">Our Privacy Commitment:</p>
                 <p>
-                  We believe in extreme transparency and data minimization. We only collect the minimal information necessary to deliver accurate item valuations, manage scanning quotas, and synchronize your preferences. We do not sell your personal data.
+                  We believe in extreme transparency and data minimization. We only collect the minimal information necessary to deliver item valuation estimates, manage scanning quotas, and synchronize your preferences. We do not sell your personal data.
                 </p>
               </div>
 
@@ -244,7 +244,7 @@ export default function Legal({ initialTab = 'terms' }: LegalProps) {
                     <strong>Device Identifiers &amp; Tokens:</strong> We generate a secure, randomized installation token to manage free scan limits, verify device health, and ensure fair usage.
                   </li>
                   <li>
-                    <strong>Item Images &amp; Scan Queries:</strong> Photos submitted for valuation are securely transmitted via HTTPS to Google Gemini AI models strictly to identify the item and retrieve comps. Images are processed ephemerally and are not permanently retained on our application servers.
+                    <strong>Item Images &amp; Scan Queries:</strong> Photos submitted for valuation are securely transmitted via HTTPS to Google Gemini AI models strictly to identify the item and generate a valuation estimate. Images are processed ephemerally and are not permanently retained on our application servers.
                   </li>
                   <li>
                     <strong>Subscription &amp; Purchase Verification:</strong> Purchase tokens and transaction receipts are validated cryptographically with Apple App Store / Google Play APIs. We never store or handle your credit card or financial details.
@@ -258,7 +258,7 @@ export default function Legal({ initialTab = 'terms' }: LegalProps) {
                   Information is used exclusively for:
                 </p>
                 <ul className="list-disc pl-5 space-y-1 text-sm">
-                  <li>Processing image queries to provide real-time identification and market valuations.</li>
+                  <li>Processing image queries to provide item identification and estimated resale valuations.</li>
                   <li>Maintaining your subscription benefits and daily scanning limits.</li>
                   <li>Ensuring backend security and mitigating fraud, scraping, or spam.</li>
                   <li>Diagnosing app crashes and improving system stability.</li>
@@ -274,7 +274,6 @@ export default function Legal({ initialTab = 'terms' }: LegalProps) {
                   <li><strong>Google Firebase:</strong> Cloud authentication, remote configuration, and telemetry.</li>
                   <li><strong>Google Cloud &amp; Gemini AI:</strong> Image comprehension and visual model inference.</li>
                   <li><strong>Apple App Store / StoreKit:</strong> In-App purchase processing and receipt validation.</li>
-                  <li><strong>Marketplace Data APIs:</strong> Aggregated sold listing comp verification.</li>
                 </ul>
               </section>
 
@@ -383,9 +382,9 @@ export default function Legal({ initialTab = 'terms' }: LegalProps) {
                 </div>
 
                 <div className="space-y-3">
-                  <h4 className="font-bold text-zinc-900">How does the AI pricing algorithm calculate comps?</h4>
+                  <h4 className="font-bold text-zinc-900">How does Loot Goblin estimate resale value?</h4>
                   <p className="text-sm text-zinc-600">
-                    Loot Goblin captures an image of your item, performs visual feature extraction to identify the brand, model, and condition, and retrieves recent sold comps from verified marketplaces. It strips out mislabeled or irrelevant listings to compute the exact Low, Median, and High market prices.
+                    Loot Goblin sends your photos and details to an AI model that identifies the item and its likely condition, then produces an estimated resale price range. Estimates are informational only: actual selling prices depend on condition, timing, and buyer demand, and they are not guarantees or formal appraisals.
                   </p>
                 </div>
               </div>

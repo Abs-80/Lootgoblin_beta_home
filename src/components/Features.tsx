@@ -10,23 +10,23 @@ export default function Features() {
     },
     {
       icon: <TrendingUp className="w-6 h-6 text-emerald-600" />,
-      title: "Hyper-Accurate Market Pricing",
-      description: "Pulls live 'Sold' comps. Our proprietary engine mathematically calculates the exact Low, Median, and High prices based on current market trends."
+      title: "AI Resale Estimates",
+      description: "Get an estimated resale price range (low, typical, and high) for your find. Estimates are AI-generated and informational. They are not guarantees or formal appraisals."
     },
     {
       icon: <Book className="w-6 h-6 text-emerald-600" />,
       title: "The Book Pipeline",
-      description: "Automatically analyzes data to extract exact ISBNs, guaranteeing pricing for the exact edition and printing."
+      description: "Helps identify the edition from photos of the cover and copyright page, so you can double-check the details before you list or buy."
     },
     {
       icon: <Disc className="w-6 h-6 text-emerald-600" />,
       title: "Media Integration",
-      description: "Dedicated pipeline for identifying vinyl records and CDs, pulling accurate release metadata straight from leading market databases."
+      description: "Helps identify vinyl records and CDs from photos of the cover and label, so you can look up the exact pressing yourself."
     },
     {
       icon: <Search className="w-6 h-6 text-emerald-600" />,
-      title: "Precision Comp Matching",
-      description: "Uses our Smart-Sync engine to eliminate irrelevant listings and bad matches so only verified comps influence your price estimates."
+      title: "Ranges, Not Guarantees",
+      description: "Real selling prices depend on condition, timing, and buyer demand, so Loot Goblin gives you an estimated range instead of a single exact number."
     },
     {
       icon: <Languages className="w-6 h-6 text-emerald-600" />,
@@ -41,7 +41,7 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">Your Ultimate Reselling Arsenal</h2>
-          <p className="text-zinc-600 text-lg">We packed our proprietary Smart-Sync engine and complex market analysis into an app so fast, you won't even have to break stride down the thrift store aisle.</p>
+          <p className="text-zinc-600 text-lg">We packed AI item identification and resale estimates into an app that's quick enough to use without breaking stride down the thrift store aisle.</p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

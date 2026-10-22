@@ -6,7 +6,7 @@ export default function TargetAudience() {
     {
       icon: <MapPin className="w-8 h-8 text-emerald-600" />,
       title: "Thrifters & Resellers",
-      description: "Spot underpriced gems in thrift stores, check real sold comps in seconds, and make confident buying decisions before checkout."
+      description: "Spot underpriced gems in thrift stores, get a quick resale estimate in seconds, and make better-informed buying decisions before checkout."
     },
     {
       icon: <Store className="w-8 h-8 text-emerald-600" />,
@@ -25,13 +25,13 @@ export default function TargetAudience() {
     },
     {
       icon: <ShieldCheck className="w-8 h-8 text-emerald-600" />,
-      title: "Insurance & Claim Records",
-      description: "Create photo-verified logs with real-time market valuations so you have undeniable proof of ownership and value for policies or claims."
+      title: "Records for Your Valuables",
+      description: "Create photo logs of your valuables with estimated values for your own records. Estimates are not formal appraisals and may not be accepted for insurance purposes."
     },
     {
       icon: <Sparkles className="w-8 h-8 text-emerald-600" />,
       title: "Collectors & Hobbyists",
-      description: "Catalog specialized collections—from vinyl records and first-edition books to trading cards and retro games—with exact metadata."
+      description: "Catalog specialized collections—from vinyl records and first-edition books to trading cards and retro games—with identification details."
     }
   ];
 
