@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobwick | Home Inventory</title>
+  <meta name="description" content="Record what you own, room by room, so an insurance claim is easier if the worst happens.">
+  <style>
+    :root { --bg:#f7f5f0; --card:#fff; --text:#2b2a27; --muted:#6b675f; --line:#e4e0d6; --navy:#1f2f4a; --amber:#c98a2b; --sage:#2f6b4f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#181816; --card:#22221f; --text:#ecebe6; --muted:#a9a59b; --line:#3a3934; --navy:#c9d6ee; --amber:#e3a94f; --sage:#7fc4a0; }
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding:24px 16px; }
+    .wrap { max-width:760px; margin:0 auto; }
+    header { padding:32px 0 8px; }
+    .name { font-size:2.6rem; font-weight:800; color:var(--navy); margin:0; letter-spacing:-.02em; }
+    .tag { font-size:1.2rem; color:var(--muted); margin:6px 0 0; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:24px 22px; margin-top:20px; }
+    h2 { font-size:1.15rem; margin:0 0 10px; color:var(--navy); }
+    ul { padding-left:20px; margin:0; }
+    li { margin:6px 0; }
+    .beta { border-color:var(--amber); }
+    a { color:var(--sage); }
+    footer { color:var(--muted); font-size:.85rem; margin:32px 0 8px; display:flex; flex-wrap:wrap; gap:16px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="name">Hobwick</p>
+    <p class="tag">Record what you own, room by room, so an insurance claim is easier if the worst happens.</p>
+  </header>
+
+  <section class="card">
+    <h2>What it does</h2>
+    <ul>
+      <li>Walk through your home room by room, with a checklist of what to record in each.</li>
+      <li>Snap a photo and Hobwick suggests the brand, model and a replacement cost. You confirm what's saved.</li>
+      <li>Keep receipts, serial numbers, warranty and return dates with each item.</li>
+      <li>Reminders for smoke and CO alarm replacement, warranties and return windows.</li>
+      <li>Checks your items against Health Canada's recall list, on your phone.</li>
+      <li>Export reports and spreadsheets for your insurer. English and French.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Private by design</h2>
+    <p>Your inventory stays on your phone. Only the photos you choose to scan are sent off it, to identify the item,
+    and they aren't kept. No ads, no tracking, no selling data. <a href="privacy.html">Read the privacy policy</a>.</p>
+  </section>
+
+  <section class="card beta">
+    <h2>Beta</h2>
+    <p>Hobwick is in a small, invite-only beta on iPhone. To ask about joining, email
+    <a href="mailto:lootgoblin.support@gmail.com?subject=Hobwick%20beta">lootgoblin.support@gmail.com</a>.</p>
+  </section>
+
+  <footer>
+    <a href="privacy.html">Privacy policy</a>
+    <span>Made in Canada by Adrian Chapman</span>
+  </footer>
+</div>
+</body>
+</html>

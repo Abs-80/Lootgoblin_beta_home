@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobwick | Privacy Policy</title>
+  <meta name="description" content="What Hobwick keeps on your phone, what leaves it, and why.">
+  <style>
+    :root { --bg:#f7f5f0; --card:#fff; --text:#2b2a27; --muted:#6b675f; --line:#e4e0d6; --accent:#2f6b4f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#181816; --card:#22221f; --text:#ecebe6; --muted:#a9a59b; --line:#3a3934; --accent:#7fc4a0; }
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding:24px 16px; }
+    main { max-width:760px; margin:0 auto; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:28px 22px; }
+    @media (min-width:700px) { main { padding:44px 48px; } }
+    h1 { font-size:1.9rem; margin:0 0 4px; }
+    h2 { font-size:1.15rem; margin:32px 0 8px; }
+    p, li { color:var(--text); }
+    .meta { color:var(--muted); font-size:.9rem; margin:0 0 24px; }
+    .short { background:var(--bg); border:1px solid var(--line); border-radius:14px; padding:4px 20px; }
+    a { color:var(--accent); }
+    .back { font-size:.9rem; font-weight:600; text-decoration:none; display:inline-block; margin-bottom:18px; }
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; min-width:560px; }
+    th, td { text-align:left; vertical-align:top; padding:10px 8px; border-bottom:1px solid var(--line); }
+    th { color:var(--muted); font-weight:600; }
+    footer { color:var(--muted); font-size:.85rem; margin-top:36px; border-top:1px solid var(--line); padding-top:16px; }
+  </style>
+</head>
+<body>
+<main>
+  <a class="back" href="./">&larr; Hobwick</a>
+  <h1>Hobwick Privacy Policy</h1>
+  <p class="meta">Last updated: October 30, 2026 &bull; Developer: Adrian Chapman, Canada</p>
+
+  <p>Hobwick helps you record what you own, room by room, for insurance. This policy explains what leaves your
+  phone, why, and what you can do about it. Hobwick is made by one Canadian developer, and this page is written in
+  plain language on purpose.</p>
+
+  <h2>The short version</h2>
+  <div class="short">
+    <ul>
+      <li><strong>Your inventory is saved on your phone</strong>, not on our server: rooms, items, prices, notes,
+        photos and receipts.</li>
+      <li><strong>When you scan an item, its photos are sent to our server and to Google's Gemini AI</strong> to
+        identify it. We don't keep the photos after the answer comes back.</li>
+      <li><strong>We don't sell your data</strong>, show ads, or track you across other apps or websites.</li>
+      <li><strong>You can delete your account</strong> in the app, and that also wipes the inventory on your
+        phone.</li>
+    </ul>
+  </div>
+
+  <h2>What stays on your phone</h2>
+  <p>Everything you record: rooms and checklists, item names, brands, models, serial numbers, quantities, dates,
+  prices, notes, photos, receipt photos, warranty and return dates, and your policy contents limit. We can't see any
+  of it. If you lose your phone without a backup, we can't recover it, so please use <strong>Export
+  everything</strong> in Settings.</p>
+  <p>Photo locations (GPS) are removed before a photo is saved. If the location can't be removed, the photo isn't
+  saved.</p>
+  <p>The optional app lock uses your phone's own Face ID, Touch ID, fingerprint or passcode. We never see these.</p>
+  <p>Hobwick never reads, changes or deletes anything in your phone's photo library. Photos you take in the app are
+  kept in the app's own storage.</p>
+
+  <h2>What leaves your phone, and why</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>What</th><th>Sent to</th><th>Why</th><th>How long it's kept</th></tr></thead>
+    <tbody>
+      <tr><td>Your email address and sign-in (or Apple / Google sign-in)</td><td>Google Firebase Authentication</td>
+        <td>To give you an account</td><td>Until you delete your account</td></tr>
+      <tr><td>Photos of an item you scan, and any name or notes you typed for that scan</td>
+        <td>Our server (Railway, in the United States), then Google's Gemini AI</td>
+        <td>To identify the item and suggest a brand, model and replacement cost</td>
+        <td>Not stored by our server. We use Google's paid Gemini API, under which Google doesn't use the content to
+        improve its products.</td></tr>
+      <tr><td>Your account ID, the item name hint, and the time of a scan</td><td>Our server logs</td>
+        <td>To fix problems and stop abuse</td><td>About 7 days</td></tr>
+      <tr><td>A scrambled device identifier and scan counts</td><td>Our server</td>
+        <td>To manage the free trial and prevent abuse</td>
+        <td>Until you delete your account. A scrambled trial record is kept so free trials can't be repeated.</td></tr>
+      <tr><td>Nothing (a download only)</td><td>&mdash;</td>
+        <td>Hobwick includes Health Canada's public recall list and may download updated copies of it from our
+        server. Matching happens on your phone; your items are never sent anywhere to check for recalls.</td>
+        <td>&mdash;</td></tr>
+      <tr><td>Anonymous usage counts, <strong>only if you turn them on</strong> (see below)</td><td>Our server</td>
+        <td>To learn whether the beta is useful</td><td>Up to 12 months</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Hobwick never sends your item list, prices, serial numbers, receipts, notes or policy details to us.</p>
+
+  <h2>Anonymous usage counts (beta, optional, off unless you turn them on)</h2>
+  <p>During the beta you can choose to share simple counts with us: how many rooms you've finished, items added,
+  reports and exports made, and days the app was opened. They're sent with a random ID that isn't linked to your
+  account or email, and they never include item names, photos, values or anything you typed. You can turn this off
+  in Settings at any time.</p>
+
+  <h2>Notifications</h2>
+  <p>Reminders (smoke and CO alarm replacement, warranties, return windows) are scheduled on your phone. No server
+  is involved, and they only work if you allow notifications.</p>
+
+  <h2>Sharing</h2>
+  <p>We don't sell or rent your information. We use these service providers only to run the app: Google Firebase
+  (sign-in), Railway (our server) and Google Gemini (identifying items). When you share a report or export, it goes
+  where you choose (email, Files, Google Drive and so on); we never see it.</p>
+
+  <h2>Your choices and rights</h2>
+  <ul>
+    <li><strong>Delete your account:</strong> in Hobwick, open Settings and choose <strong>Delete Account &amp;
+      Data</strong>. This deletes your sign-in, our records linked to your account ID, and the inventory, photos and
+      receipts on your phone. The app offers an export first.</li>
+    <li><strong>Access or correct:</strong> your inventory is on your phone, where you can view, edit, export or
+      delete it.</li>
+    <li>Under Canadian privacy law (PIPEDA, and Quebec's Law 25 where it applies) you can ask what personal
+      information we hold about you and ask us to correct or delete it. Email us at the address below.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>Hobwick isn't meant for children under 13, and we don't knowingly collect their information.</p>
+
+  <h2>Changes</h2>
+  <p>If we change what leaves your phone, we'll update this page and tell you in the app before it happens.</p>
+
+  <h2>Contact</h2>
+  <p>Questions or requests: <a href="mailto:lootgoblin.support@gmail.com">lootgoblin.support@gmail.com</a>
+  (the developer's shared support address). Person responsible for privacy: Adrian Chapman.</p>
+
+  <footer>Hobwick is an inventory tool. Its replacement-cost suggestions are estimates to help you prepare a claim,
+  not appraisals or insurance advice.</footer>
+</main>
+</body>
+</html>
