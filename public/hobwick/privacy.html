@@ -32,7 +32,7 @@
 <main>
   <a class="back" href="./">&larr; Hobwick</a>
   <h1>Hobwick Privacy Policy</h1>
-  <p class="meta">Last updated: October 30, 2026 &bull; Developer: Adrian Chapman, Canada</p>
+  <p class="meta">Last updated: November 3, 2026 &bull; Developer: Adrian Chapman, Canada</p>
 
   <p>Hobwick helps you record what you own, room by room, for insurance. This policy explains what leaves your
   phone, why, and what you can do about it. Hobwick is made by one Canadian developer, and this page is written in
@@ -59,8 +59,9 @@
   <p>Photo locations (GPS) are removed before a photo is saved. If the location can't be removed, the photo isn't
   saved.</p>
   <p>The optional app lock uses your phone's own Face ID, Touch ID, fingerprint or passcode. We never see these.</p>
-  <p>Hobwick never reads, changes or deletes anything in your phone's photo library. Photos you take in the app are
-  kept in the app's own storage.</p>
+  <p>Hobwick keeps inventory photos in its own storage. It does not scan, edit or delete your photo library.
+  You can choose photos with the system picker. Saving an additional copy to your photo library is optional and
+  off by default; location metadata is removed from saved copies.</p>
 
   <h2>What leaves your phone, and why</h2>
   <div class="table-wrap">
@@ -74,7 +75,7 @@
         <td>To identify the item and suggest a brand, model and replacement cost</td>
         <td>Not stored by our server. We use Google's paid Gemini API, under which Google doesn't use the content to
         improve its products.</td></tr>
-      <tr><td>Your account ID, the item name hint, and the time of a scan</td><td>Our server logs</td>
+      <tr><td>Your account ID, technical request information, and the time of a scan</td><td>Our server logs</td>
         <td>To fix problems and stop abuse</td><td>About 7 days</td></tr>
       <tr><td>A scrambled device identifier and scan counts</td><td>Our server</td>
         <td>To manage the free trial and prevent abuse</td>
@@ -88,7 +89,9 @@
     </tbody>
   </table>
   </div>
-  <p>Hobwick never sends your item list, prices, serial numbers, receipts, notes or policy details to us.</p>
+  <p>Your complete inventory is not uploaded to our server. Scanning sends only the photos and item details you
+  choose for that scan. A label in a photo may include a serial number or other personal information: check what
+  you select before allowing AI scanning. You can add items manually without AI.</p>
 
   <h2>Anonymous usage counts (beta, optional, off unless you turn them on)</h2>
   <p>During the beta you can choose to share simple counts with us: how many rooms you've finished, items added,
@@ -96,13 +99,27 @@
   account or email, and they never include item names, photos, values or anything you typed. You can turn this off
   in Settings at any time.</p>
 
+  <h2>Diagnostics and crash reports</h2>
+  <p>Hobwick keeps technical diagnostic logs on this phone, limited to about 1 MB of retained files. Records older
+  than 14 days are removed at startup. They exclude inventory details, photos, values and sign-in tokens. They
+  are not uploaded automatically and are excluded from inventory exports and cloud backups. Deleting your account clears them.</p>
+  <p>This iOS build uses Google Firebase Crashlytics to send crash reports and technical app and device information
+  to Google so we can fix crashes. We do not intentionally attach inventory records or photos to crash reports.
+  Crash reports are handled under Firebase's data-retention policies. This build does not use Firebase Analytics
+  or Firebase Performance. Optional beta usage counts are separate and remain off unless you enable them.</p>
+  <h2>Your own backups</h2>
+  <p>You can save inventory backups and reports in your own iCloud Drive, managed by Apple. Signing in to Hobwick
+  on another phone does not transfer the inventory automatically: restore a backup. Your inventory belongs to this
+  phone and stays here when you sign out; another account on this phone sees the same inventory. Deleting your
+  Hobwick account does not delete exported copies or backups in your own iCloud Drive.</p>
+
   <h2>Notifications</h2>
   <p>Reminders (smoke and CO alarm replacement, warranties, return windows) are scheduled on your phone. No server
   is involved, and they only work if you allow notifications.</p>
 
   <h2>Sharing</h2>
   <p>We don't sell or rent your information. We use these service providers only to run the app: Google Firebase
-  (sign-in), Railway (our server) and Google Gemini (identifying items). When you share a report or export, it goes
+  (sign-in and crash reports), Railway (our server), Google Gemini (identifying items), and Apple (your optional iCloud Drive backups). When you share a report or export, it goes
   where you choose (email, Files, Google Drive and so on); we never see it.</p>
 
   <h2>Your choices and rights</h2>
